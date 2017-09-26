@@ -13,6 +13,7 @@ Stack buffer overflow
 
 The result of gdb is as follows:
 
+```
 #gdb  /work/openexif-2_1_4-src/examples/ExifTagDump/ExifTagDump
 (gdb) run ../out/crashes/id:000007,sig:11,src:000000,op:havoc,rep:64
 The program being debugged has been started already.
@@ -28,9 +29,10 @@ Program received signal SIGSEGV, Segmentation fault.
 #2  0x0000000000410190 in ExifImageFile::initAfterOpen (this=0x7fffffffe378, cmode=0x4eff4c "r") at ExifImageFile.cpp:435
 #3  0x0000000000429cd7 in ExifOpenFile::open (this=0x7fffffffe378, filename=0x7fffffffe8ab "../out/crashes/id:000007,sig:11,src:000000,op:havoc,rep:64", cmode=0x4eff4c "r") at ExifOpenFile.cpp:78
 #4  0x0000000000402514 in main (argc=<optimized out>, argv=<optimized out>) at ExifTagDump.cpp:64
-
+```
 
 The result of running the program directly.
+```
 /work/openexif-asan/examples/ExifTagDump/ExifTagDump id:000007,sig:11,src:000000,op:havoc,rep:64
 ==52414==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffd09fbca04 at pc 0x000000545852 bp 0x7ffd09fbc9d0 sp 0x7ffd09fbc9c8
 READ of size 1 at 0x7ffd09fbca04 thread T0                         
@@ -80,7 +82,6 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
   ASan internal:           fe
   Left alloca redzone:     ca
   Right alloca redzone:    cb
-
-
+```
 
 The poc is attached [here](crash.jpg).
