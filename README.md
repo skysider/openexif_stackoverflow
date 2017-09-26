@@ -13,7 +13,7 @@ Stack buffer overflow
 
 The result of gdb is as follows:
 
-#gdb  /work/openexif-2_1_4-src/examples/ExifTagDump/ExifTagDump
+`#gdb  /work/openexif-2_1_4-src/examples/ExifTagDump/ExifTagDump
 (gdb) run ../out/crashes/id:000007,sig:11,src:000000,op:havoc,rep:64
 The program being debugged has been started already.
 Start it from the beginning? (y or n) y
@@ -80,7 +80,7 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
   ASan internal:           fe
   Left alloca redzone:     ca
   Right alloca redzone:    cb
-
+`
 
 
 The poc is attached [here](crash.jpg).
